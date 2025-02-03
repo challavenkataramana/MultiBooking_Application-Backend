@@ -1,34 +1,35 @@
-const cors = require('cors');
-const express=require('express');
-const bodyParser=require('body-parser');
-const authRoutes=require('./routes/auth');
+const express = require("express");
+const bodyParser = require("body-parser");
+const authRoutes = require("./routes/auth");
+require("dotenv").config();
 
+const app = express();
+const cors = require("cors");
 
-require('dotenv').config();
+const corsOptions = {
+  origin: [
+    "http://localhost:3001",
+    "http://localhost:3000",
+    "https://challavenkataramana.github.io", 
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
 
-
-const app=express();
-
-app.use(cors({
-  origin: 'http://localhost:3001', // Your frontend URL
-  methods: ['GET', 'POST'],
-  credentials: true // Allow cookies or credentials if needed
-}));
-
-
+app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin"); // Same-origin policy for opener
-  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp"); // Require embedded content to come from a trusted origin
+  res.setHeader("Cross-Origin-Opener-Policy", "unsafe-none");
+  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+  res.removeHeader("Cross-Origin-Embedder-Policy"); 
   next();
 });
 
 
-app.use(express.static('public'));
-
+app.use(express.static("public"));
 app.use(bodyParser.json());
-app.use('/auth',authRoutes);
-
+app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
