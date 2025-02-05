@@ -39,7 +39,7 @@ const createUsersTable = async () => {
   }
 };
 
-// Run Table Creation
+
 createUsersTable();
 
 module.exports = pool;
