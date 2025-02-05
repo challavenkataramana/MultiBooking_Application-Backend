@@ -29,6 +29,11 @@ app.use((req, res, next) => {
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the MultiBooking API!');
+});
+
 app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 3000;
