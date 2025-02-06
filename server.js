@@ -10,7 +10,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3001",
     "http://localhost:3000",
-    "https://challavenkataramana.github.io", 
+    "https://multibooking-application-5b14.vercel.app",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
