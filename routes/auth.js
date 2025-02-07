@@ -70,12 +70,13 @@ router.post("/google-login", async (req, res) => {
     if (userResult.rows.length > 0) {
       userId = userResult.rows[0].id;
     } else {
+      const dummyPassword = "google_auth_user";
       const insertQuery = `
-         INSERT INTO users (email, name) 
-         VALUES ($1, $2) 
+         INSERT INTO users (email, name,password) 
+         VALUES ($1, $2,$3) 
          RETURNING id
        `;
-      const insertResult = await pool.query(insertQuery, [email, name]);
+      const insertResult = await pool.query(insertQuery, [email, name,dummyPassword]);
       userId = insertResult.rows[0].id;
     }
 
