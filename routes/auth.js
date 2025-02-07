@@ -26,7 +26,6 @@ router.post("/register", async (req, res) => {
       .status(201)
       .send({ message: "User registered successfully", user: result.rows[0] });
   } catch (err) {
-    console.error("Registration Error:", err);
     res
       .status(400)
       .send({ error: "User registration failed", details: err.message });
@@ -35,7 +34,6 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(email,password);
   try {
     const result = await pool.query("select * from users where email=$1", [
       email,
@@ -86,7 +84,6 @@ router.post("/google-login", async (req, res) => {
 
     res.json({ token });
   } catch (error) {
-    console.error("Error during Google login/registration:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -103,7 +100,6 @@ router.get("/user/:userId", async (req, res) => {
     }
     res.json(user);
   } catch (error) {
-    console.error("Error fetching user details:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
