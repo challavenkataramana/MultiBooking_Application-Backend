@@ -12,6 +12,7 @@ const corsOptions = {
     "http://localhost:3000",
     "https://multibooking-application-5b14.vercel.app",
     "https://multibooking-application-bjdo.vercel.app",
+     "https://multibooking-application-bjdo-1ezqv4ymz.vercel.app/Login",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
