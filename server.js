@@ -13,6 +13,7 @@ const corsOptions = {
     "https://multibooking-application-5b14.vercel.app",
     "https://multibooking-application-bjdo.vercel.app",
     "https://multibooking-application-bjdo-ec1t4915k.vercel.app",
+    "https://multibooking-applica-git-f3a1d5-challa-venkata-ramanas-projects.vercel.app",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
